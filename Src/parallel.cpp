@@ -2,6 +2,8 @@
 #include <vector>
 #include <pthread.h>
 #include <chrono>
+#include <fstream> 
+
 using namespace std;
 using namespace std::chrono;
 
@@ -59,8 +61,20 @@ int main() {
 
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start);
+
+    bool isValid = validate_result();
+
     cout << "Parallel Transpose Time (" << NUM_THREADS << " threads): " << duration.count() << " ms" << endl;
-    cout << "Validation: " << (validate_result() ? "PASSED ✅" : "FAILED ❌") << endl;
+    cout << "Validation: " << (isValid ? "PASSED ✅" : "FAILED ❌") << endl;
+
+    // كتابة النتيجة إلى ملف
+    ofstream out("../results/validation_checksums.txt");
+    if (out.is_open()) {
+        out << "Validation: " << (isValid ? "PASSED" : "FAILED") << endl;
+        out.close();
+    } else {
+        cerr << "⚠️ Could not write to results/validation_checksums.txt" << endl;
+    }
 
     return 0;
 }
