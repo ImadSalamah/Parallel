@@ -1,75 +1,73 @@
-# Matrix Transposition (Sequential & Parallel)
 
-This project demonstrates how to perform matrix transposition using both **sequential** and **parallel** (multi-threaded) approaches in C++.
+# Matrix Transposition – Sequential and Parallel (Pthreads) | تبديل المصفوفة – تسلسلي ومتوازي (Pthreads)
 
----
+This project implements matrix transposition using:
+- A sequential version (single-threaded)
+- A parallel version using POSIX threads (pthreads)
 
-## 📁 Files Included
-
-- `sequential.cpp`: Transposes a matrix using a standard for-loop (single-threaded).
-- `parallel.cpp`: Transposes a matrix using `pthread`, distributing rows among threads.
-
----
-
-## 🧪 Matrix Size
-
-Both programs operate on a matrix of size **2000 x 2000** by default. You can increase the size by modifying the constants `N` and `M` at the top of each file.
+يطبق المشروع خوارزمية تبديل المصفوفة باستخدام:
+- نسخة تسلسلية (خيط واحد)
+- نسخة متوازية باستخدام pthread
 
 ---
 
-## 🧵 Threads
+## 📁 Files | الملفات
 
-The parallel version uses `4` threads by default. You can change this by modifying the `NUM_THREADS` constant.
+- `sequential.cpp`: Sequential transpose | التبديل التسلسلي
+- `parallel.cpp`: Parallel transpose with threads | التبديل المتوازي
+- `results/`: Contains validation outputs and timing results | نتائج التحقق والوقت
 
 ---
 
-## 🛠️ Compilation
+## 📐 Matrix Sizes | أحجام المصفوفات
 
-Make sure you have `g++` and `pthread` installed.
+Tested sizes: 1000x1000, 2000x2000, ..., 32000x32000  
+تم الاختبار على: 1000x1000 حتى 32000x32000
 
-### Compile Sequential Version
+---
+
+## 🧵 Threads Used | عدد الخيوط
+
+Tested with 1, 2, 4, 8, 16 threads  
+تم استخدام: 1، 2، 4، 8، 16 خيطًا
+
+---
+
+## 🛠️ Compilation | الترجمة
+
 ```bash
-g++ sequential.cpp -o sequential
+g++ Src/sequential.cpp -o sequential
+g++ Src/parallel.cpp -pthread -o parallel
 ```
 
-### Compile Parallel Version
-```bash
-g++ parallel_no_struct.cpp -pthread -o parallel
-```
-
 ---
 
-## ▶️ Execution
+## ▶️ Execution | التشغيل
 
-### Run Sequential
 ```bash
 ./sequential
-```
-
-### Run Parallel
-```bash
 ./parallel
 ```
 
 ---
 
-## ✅ Validation
+## ✅ Validation | التحقق
 
-Both programs print:
-- Execution time in milliseconds
-- A validation check (`PASSED ✅` or `FAILED ❌`) to ensure the result is correct
+Each version prints:  
+كل نسخة تطبع:
+
+- Execution time | زمن التنفيذ  
+- Result validation (PASSED or FAILED) | صحة النتيجة (PASSED أو FAILED)  
+
+Also saved in:  
+وتُحفظ في:
+
+- `results/validation_checksums_sequential.txt`  
+- `results/validation_checksums.txt`
 
 ---
 
-## 📌 Notes
+## ⚙️ Tools | الأدوات
 
-- No classes or structs are used in this implementation
-- Uses `chrono` for timing
-- Matrix elements are filled with random numbers
-
----
-
-## 📚 References
-
-- [Pthreads documentation](https://man7.org/linux/man-pages/man7/pthreads.7.html)
-- [GeeksforGeeks - Matrix Transpose](https://www.geeksforgeeks.org/transpose-matrix/)
+- C++, pthread, chrono, macOS Terminal
+- C++، pthread، chrono، نظام macOS
