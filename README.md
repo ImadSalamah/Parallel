@@ -7,7 +7,7 @@ This project demonstrates how to perform matrix transposition using both **seque
 ## 📁 Files Included
 
 - `sequential.cpp`: Transposes a matrix using a standard for-loop (single-threaded).
-- `parallel_no_struct.cpp`: Transposes a matrix using `pthread` without using `struct`, distributing rows among threads.
+- `parallel.cpp`: Transposes a matrix using `pthread` without using `struct`, distributing rows among threads.
 
 ---
 
