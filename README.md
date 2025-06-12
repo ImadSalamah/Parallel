@@ -56,26 +56,6 @@ Each thread processes separate rows, enabling concurrent execution and reduced o
 
 ---
 
-### ⚙️ Compilation Instructions (on macOS with GCC from Homebrew)
-
-```bash
-brew install gcc                     # One-time setup
-cd project2/p2-Src
-g++-15 -fopenmp parallel_omp.cpp -o parallel_omp
-```
-
-> Replace `g++-15` with your actual installed version.
-
----
-
-### ▶️ Run Instructions
-
-```bash
-./parallel_omp
-```
-
----
-
 ### 📐 Matrix Sizes Tested
 
 - 1000×1000  
