@@ -7,9 +7,9 @@
 using namespace std;
 using namespace std::chrono;
 
-const int N = 2000;
-const int M = 2000;
-const int NUM_THREADS = 4;
+const int N = 32000;
+const int M = 32000;
+const int NUM_THREADS = 16ف;
 
 vector<vector<int>> A(N, vector<int>(M));
 vector<vector<int>> B(M, vector<int>(N));
@@ -21,10 +21,12 @@ void fill_matrix() {
 }
 
 void transpose_parallel_omp() {
-    #pragma omp parallel for num_threads(NUM_THREADS) collapse(2)
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < M; j++)
+    #pragma omp parallel for num_threads(NUM_THREADS)
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
             B[j][i] = A[i][j];
+        }
+    }
 }
 
 bool validate_result() {
