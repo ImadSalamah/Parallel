@@ -1,62 +1,39 @@
+# 🧮 Matrix Transposition Projects – Sequential, Pthreads, and OpenMP
 
-# Matrix Transposition – Sequential and Parallel (Pthreads) :
+This repository contains two projects for transposing a matrix:
+
+- **Project 1**: Sequential and Pthreads-based implementation.
+- **Project 2**: OpenMP-based parallel implementation.
+
+---
+
+## 🧩 Project 1 – Sequential and Pthreads
+
+### ✅ Description
 
 This project implements matrix transposition using:
-- A sequential version (single-threaded)
-- A parallel version using POSIX threads (pthreads)
-
-
+- A **sequential** version (single-threaded)
+- A **parallel version** using POSIX Threads (Pthreads)
 
 ---
 
-## 📁 Files 
+### 📁 Files
 
-- `sequential.cpp`: Sequential transpose 
-- `parallel.cpp`: Parallel transpose with threads
-- `results/`: Contains validation outputs and timing results 
-
----
-
-## 📐 Matrix Sizes 
-
-Tested sizes: 1000x1000, 2000x2000, ..., 32000x32000  
+- `Src/sequential.cpp`: Sequential implementation
+- `Src/parallel.cpp`: Pthreads implementation
+- `results/`: Contains validation and timing output
 
 ---
 
-## 🧵 Threads Used 
+### 📐 Matrix Sizes Tested
 
-Tested with 1, 2, 4, 8, 16 threads  
-
-
----
-
-## 🛠️ Compilation 
-
-```bash
-g++ Src/sequential.cpp -o sequential
-g++ Src/parallel.cpp -pthread -o parallel
-```
+- 1000×1000  
+- 2000×2000  
+- 4000×4000  
+- ... up to 32000×32000
 
 ---
 
-## ▶️ Execution
+### 🧵 Threads Used
 
-```bash
-./sequential
-./parallel
-```
-
----
-
-## ✅ Validation 
-
-Each version prints:  
-- Execution time
-- Result validation (PASSED or FAILED)
-- `results/validation_checksums.txt`
-
----
-
-## ⚙️ Tools 
-
-- C++, pthread, chrono, macOS Terminal
+- 1, 2, 4, 8, 16 threads (configurable)
